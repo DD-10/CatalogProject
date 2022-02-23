@@ -1,7 +1,13 @@
+using Catalog.Context;
 using Catalog.Repositories;
-
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Add Sql connection
+builder.Services.AddDbContext<CatalogContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CatalogContext")));
+
 
 // Add services to the container.
 
